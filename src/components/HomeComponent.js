@@ -1,11 +1,15 @@
 import React from "react";
 import {
     Card, CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle
+    CardTitle, CardSubtitle, CardDeck
 } from 'reactstrap';
 import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/baseUrl';
 import { FadeTransform } from 'react-animation-components';
+import '../App.css'
+
+
+
 function RenderCard({ item, isLoading, errMess }) {
 
     if (isLoading) {
@@ -25,12 +29,12 @@ function RenderCard({ item, isLoading, errMess }) {
                 transformProps={{
                     exitTransform: 'scale(0.5) translateY(-50%)'
                 }}>
-            <Card>
-            <CardImg src={baseUrl + item.image} alt={item.name} />
+            <Card raised className='cardHeight'>
+            <CardImg src={item.image} alt={item.name} style={{height:'200px'}} />
                 <CardBody>
-                    <CardTitle>{item.name}</CardTitle>
-                    {item.designation ? <CardSubtitle>{item.designation}</CardSubtitle> : null}
-                    <CardText>{item.description}</CardText>
+                    <CardTitle><strong>{item.name}</strong></CardTitle>
+                    {item.designation ? <div><CardSubtitle>{item.designation}</CardSubtitle><br/></div> : null}
+                    <CardText><i>{item.description}</i></CardText>
                 </CardBody>
             </Card>
             </FadeTransform>
@@ -40,7 +44,7 @@ function RenderCard({ item, isLoading, errMess }) {
 
 function Home(props) {
     return (
-        <div className="container">
+        <div className="container cardHeight">
             <div className="row align-items-start">
                 <div className="col-12 col-md m-1">
                     <RenderCard item={props.dish}
@@ -53,7 +57,7 @@ function Home(props) {
                 isLoading={props.promoLoading}
                  errMess={props.promoErrMess} />
                 </div>
-                <div className="col-12 col-md m-1">
+                <div className="col-12 col-md m-1" >
                 <RenderCard item={props.leader} 
                 isLoading={props.leaderLoading}
                 errMess={props.leaderErrMess}

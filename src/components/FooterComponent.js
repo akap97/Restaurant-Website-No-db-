@@ -38,9 +38,9 @@ function Footer(props) {
                         </div>
                     </div>
                 </div>
-                <div className="row justify-content-center">
-                    <div className="col-auto">
-                        <p>© Copyright 2018 Ristorante Con Fusion</p>
+                <div className="row justify-content-center d-flex align-items-end" >
+                    <div  className="footer-copyright d-flex align-items-end " >
+                        <p className="d-flex align-items-end" >© Copyright 2018 Ristorante Con Fusion</p>
                     </div>
                 </div>
             </div>
